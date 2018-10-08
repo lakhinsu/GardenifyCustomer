@@ -5,19 +5,26 @@
 
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/register"
-            android:title="Register" />
+            android:id="@+id/mycart"
+            android:title="My Cart" />
         <item
-            android:id="@+id/login"
-            android:title="login" />
+            android:id="@+id/menupendingorders"
+            android:title="Pending Orders" />
+
+        <item
+            android:id="@+id/menucofirmedorders"
+            android:title="Confirmed Orders" />
+        <item
+            android:id="@+id/menudeclinedorders"
+            android:title="Declined Orders" />
+
+
+
         <item
             android:id="@+id/logout"
             android:title="logout" />
 
-        <item
-            android:id="@+id/mycart"
-            android:title="My Cart" />
-    </group>
+          </group>
 
 
 </menu>

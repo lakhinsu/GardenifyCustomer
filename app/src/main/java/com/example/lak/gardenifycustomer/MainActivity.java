@@ -1,5 +1,6 @@
 package com.example.lak.gardenifycustomer;
 
+import android.app.Notification;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -41,7 +42,6 @@ public class MainActivity extends AppCompatActivity
         dailybutton=findViewById(R.id.maindaily);
 
         monthlybutton=findViewById(R.id.mainmonthly);
-
         /*FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -121,12 +121,12 @@ public class MainActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.register) {
-            Intent intent=new Intent(getApplicationContext(),RegActivity.class);
+        if (id == R.id.menucofirmedorders) {
+            Intent intent=new Intent(getApplicationContext(),ConfirmedOrders.class);
             startActivity(intent);
 
-        } else if (id == R.id.login) {
-            Intent intent=new Intent(getApplicationContext(),LoginActivity.class);
+        } else if (id == R.id.menudeclinedorders) {
+            Intent intent=new Intent(getApplicationContext(),DeclinedOrders.class);
             startActivity(intent);
 
         }else if (id == R.id.logout) {
@@ -148,6 +148,10 @@ public class MainActivity extends AppCompatActivity
 
         }else if(id==R.id.mycart){
             Intent intent = new Intent(getApplicationContext(),MyCart.class);
+            startActivity(intent);
+        }
+        else if(id==R.id.menupendingorders){
+            Intent intent = new Intent(getApplicationContext(),PendingOrders.class);
             startActivity(intent);
         }
 

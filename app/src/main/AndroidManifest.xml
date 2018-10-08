@@ -29,7 +29,11 @@
         <activity android:name=".AddToCart" />
         <activity android:name=".MonthlyServices" />
         <activity android:name=".AddToCartMonthly" />
-        <activity android:name=".MyCart"></activity>
+        <activity android:name=".MyCart" />
+        <activity android:name=".PendingOrders" />
+        <activity android:name=".ConfirmedOrders" />
+        <activity android:name=".DeclinedOrders" />
+
     </application>
 
 </manifest>

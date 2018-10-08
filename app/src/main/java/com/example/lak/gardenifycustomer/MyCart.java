@@ -85,7 +85,11 @@ public class MyCart extends AppCompatActivity {
                             Provider provider=dataSnapshot.getValue(Provider.class);
                             Log.d("lakapp","provider="+provider.getName());
                             provider.addpendingorder(order);
+                            user.removerfromcart(order);
+                            user.addpendingorder(order);
                             moveToPendingOrder(mDatabase2,provider);
+                            mDatabase.setValue(user);
+
 
                         }
 

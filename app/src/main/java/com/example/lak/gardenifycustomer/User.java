@@ -16,9 +16,13 @@ public class User {
     ArrayList<String> cart;
     ArrayList<String> pendingorders;
     ArrayList<String> confirmorders;
+    ArrayList<String> declineorders;
 
     public User() {
         cart=new ArrayList<>();
+        pendingorders=new ArrayList<>();
+        confirmorders=new ArrayList<>();
+        declineorders=new ArrayList<>();
 
     }
     /*public User(String name,String password){
@@ -71,5 +75,17 @@ public class User {
     }
     public void addconfirmorder(String order){
         pendingorders.add(order);
+    }
+    public void removerpendingorder(String order){
+        pendingorders.remove(order);
+    }
+    public void removerfromcart(String order){
+        cart.remove(order);
+    }
+    public void addtodeclineorder(String order){
+        declineorders.add(order);
+    }
+    public ArrayList<String> getDeclineorders(){
+        return declineorders;
     }
 }

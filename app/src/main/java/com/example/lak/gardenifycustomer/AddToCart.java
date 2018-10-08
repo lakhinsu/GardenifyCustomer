@@ -138,7 +138,7 @@ public class AddToCart extends AppCompatActivity {
                            new AlertDialog.Builder(AddToCart.this)
                                    .setTitle("Add To  Cart")
                                    .setMessage("Do you really want to Add?")
-                                   .setIcon(android.R.drawable.ic_delete)
+                                   .setIcon(android.R.drawable.ic_input_add)
                                    .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
 
                                        public void onClick(DialogInterface dialog, int whichButton) {
