@@ -1,10 +1,12 @@
 package com.example.lak.gardenifycustomer;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -40,6 +42,25 @@ public class Settings extends AppCompatActivity {
         addbox=findViewById(R.id.settingsaddress);
         update=findViewById(R.id.update);
         emailbox=findViewById(R.id.settingsemail);
+
+        try {
+
+            final ProgressDialog progDailog = ProgressDialog.show(this,
+                    "Please Wait",
+                    "Loading Data.....", true);
+            new Thread() {
+                public void run() {
+                    try {
+                        // sleep the thread, whatever time you want.
+                        sleep(3000);
+                    } catch (Exception e) {
+                    }
+                    progDailog.dismiss();
+                }
+            }.start();
+        } catch (Exception e) {
+            Toast.makeText(getApplicationContext(),"Something Went Wrong",Toast.LENGTH_SHORT).show();
+        }
 
         String name,city;
         sharedPreferences=getSharedPreferences(MyPrefs, Context.MODE_PRIVATE);
