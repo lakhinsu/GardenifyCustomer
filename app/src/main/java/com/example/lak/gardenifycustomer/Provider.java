@@ -16,6 +16,13 @@ public class Provider {
     ArrayList<String> pendingorder;
     ArrayList<String> confirmorder;
 
+    public Provider(){
+        skills=new ArrayList<>();
+        pendingorder=new ArrayList<>();
+        confirmorder=new ArrayList<>();
+
+    }
+
     void set(String name,String password,String address1,String city,String mobileno)
     {
         this.name=name;

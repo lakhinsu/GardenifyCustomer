@@ -3,28 +3,35 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:showIn="navigation_view">
 
-    <group android:checkableBehavior="single">
+    <group android:id="@+id/group1">
         <item
             android:id="@+id/mycart"
             android:title="My Cart" />
+    </group>
+    <group android:id="@+id/group2">
         <item
             android:id="@+id/menupendingorders"
             android:title="Pending Orders" />
+    </group>
+
+    <group android:id="@+id/group3">
 
         <item
             android:id="@+id/menucofirmedorders"
             android:title="Confirmed Orders" />
+    </group>
+    <group android:id="@+id/group4">
         <item
             android:id="@+id/menudeclinedorders"
             android:title="Declined Orders" />
 
+    </group>
 
-
-        <item
+    <group android:id="@+id/group5">
+     <item
             android:id="@+id/logout"
-            android:title="logout" />
-
-          </group>
+            android:title="Logout" />
+    </group>
 
 
 </menu>

@@ -1,15 +1,19 @@
 package com.example.lak.gardenifycustomer;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.support.annotation.NonNull;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -40,12 +44,16 @@ public class MyCart extends AppCompatActivity {
 
     ArrayList<String> cart;
 
+    ArrayAdapter<String> arrayAdapter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_cart);
         cartitems=findViewById(R.id.cartlistView);
         placeorder=findViewById(R.id.cartbutton);
+
+        setTitle("My cart");
 
         sharedPreferences=getSharedPreferences(MyPrefs, Context.MODE_PRIVATE);
         name=sharedPreferences.getString(Key,"");
@@ -58,13 +66,39 @@ public class MyCart extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 user=dataSnapshot.getValue(User.class);
                 cart=user.getCart();
-                ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_list_item_1, cart);
+                arrayAdapter = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_list_item_1, cart);
                 cartitems.setAdapter(arrayAdapter);
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
 
+            }
+        });
+
+        cartitems.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
+
+                final int pos=i;
+
+                new AlertDialog.Builder(MyCart.this)
+                        .setTitle("Remove From cart")
+                        .setMessage("Do you really want to Add?")
+                        .setIcon(android.R.drawable.ic_delete)
+                        .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+
+                            public void onClick(DialogInterface dialog, int whichButton) {
+                                String item=cart.get(pos);
+                                cart.remove(item);
+                                arrayAdapter.notifyDataSetChanged();
+                                Toast.makeText(getApplicationContext(),"Item Removed",Toast.LENGTH_SHORT).show();
+                            }})
+                        .setNegativeButton(android.R.string.no, null).show();
+
+
+
+                return true;
             }
         });
 
@@ -98,7 +132,9 @@ public class MyCart extends AppCompatActivity {
 
                         }
                     });
+                    cart.remove(order);
                 }
+                arrayAdapter.notifyDataSetChanged();
 
 
             }

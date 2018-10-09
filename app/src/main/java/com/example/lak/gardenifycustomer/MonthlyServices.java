@@ -37,6 +37,8 @@ public class MonthlyServices extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_monthly_services);
 
+        setTitle("Monthly Services");
+
         servicesview=findViewById(R.id.monthlyservicesview);
 
 

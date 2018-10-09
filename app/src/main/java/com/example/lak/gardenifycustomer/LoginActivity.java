@@ -45,30 +45,31 @@ public class LoginActivity extends AppCompatActivity {
 
         login.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view)
-            {
-                final String name=namebox.getText().toString();
-                final String password=passbox.getText().toString();
-                final String city=citybox.getText().toString();
-                databaseReference= FirebaseDatabase.getInstance().getReference().child(city.toUpperCase()).child("CUSTOMER").child(name);
-                User user=new User();
+            public void onClick(View view) {
+                final String name = namebox.getText().toString();
+                final String password = passbox.getText().toString();
+                final String city = citybox.getText().toString();
+                if (name.length()==0 && password.length() == 0 && city.length() == 0) {
+                    Toast.makeText(getApplicationContext(), "Incorrect Details", Toast.LENGTH_SHORT).show();
+                }
+                else{
+                databaseReference = FirebaseDatabase.getInstance().getReference().child(city.toUpperCase()).child("CUSTOMER").child(name);
+                User user = new User();
                 databaseReference.addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                        User user=dataSnapshot.getValue(User.class);
-                        Log.d("Value", "Name is: " + user.getName()+"Pass is:"+user.getPassword());
-                        if(!password.equals(""+user.getPassword())){
-                            Toast.makeText(getApplicationContext(),"Invalid Pass",Toast.LENGTH_SHORT).show();
-                        }
-                        else
-                        {
-                            sharedPreferences=getSharedPreferences(MyPrefs, Context.MODE_PRIVATE);
-                            SharedPreferences.Editor data=sharedPreferences.edit();
-                            data.putString(Key,user.getName());
-                            data.putString(Key2,city);
+                        User user = dataSnapshot.getValue(User.class);
+                        Log.d("Value", "Name is: " + user.getName() + "Pass is:" + user.getPassword());
+                        if (!password.equals("" + user.getPassword()) && name.length() == 0 && password.length() == 0 && city.length() == 0) {
+                            Toast.makeText(getApplicationContext(), "Incorrect Details", Toast.LENGTH_SHORT).show();
+                        } else {
+                            sharedPreferences = getSharedPreferences(MyPrefs, Context.MODE_PRIVATE);
+                            SharedPreferences.Editor data = sharedPreferences.edit();
+                            data.putString(Key, user.getName());
+                            data.putString(Key2, city);
                             data.commit();
-                            Toast.makeText(getApplicationContext(),"Succesful",Toast.LENGTH_SHORT).show();
-                            Intent intent=new Intent(getApplicationContext(),MainActivity.class);
+                            Toast.makeText(getApplicationContext(), "Succesful", Toast.LENGTH_SHORT).show();
+                            Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                             startActivity(intent);
                             finish();
                         }
@@ -81,6 +82,7 @@ public class LoginActivity extends AppCompatActivity {
                     }
 
                 });
+            }
             }
         });
     }

@@ -43,6 +43,8 @@ public class GardenersList extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_gardeners_list);
 
+        setTitle("Gardeners Available");
+
         gardenersview=findViewById(R.id.gardenerslist);
 
         Bundle extras = getIntent().getExtras();

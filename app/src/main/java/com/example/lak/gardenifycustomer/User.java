@@ -58,7 +58,7 @@ public class User {
         return address;
     }
     public String getEmail(){
-        return address;
+        return email;
     }
     public void addToCart(String order){
         cart.add(order);
@@ -87,5 +87,19 @@ public class User {
     }
     public ArrayList<String> getDeclineorders(){
         return declineorders;
+    }
+
+    void setName(String name){
+        this.name=name;
+
+    }
+    void setAddress(String address){
+        this.address=address;
+    }
+    void setPhoneno(String phoneno){
+        this.phoneno=phoneno;
+    }
+    void setEmail(String email){
+        this.email=email;
     }
 }

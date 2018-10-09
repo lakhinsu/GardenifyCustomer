@@ -19,6 +19,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity
@@ -59,6 +60,12 @@ public class MainActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+        View hView =  navigationView.getHeaderView(0);
+        TextView nav_user = (TextView)hView.findViewById(R.id.header);
+
+        sharedPreferences=getSharedPreferences(MyPrefs,Context.MODE_PRIVATE);
+        String headername=sharedPreferences.getString(Key,"");
+        nav_user.setText(headername);
 
 
         dailybutton.setOnClickListener(new View.OnClickListener() {
@@ -109,6 +116,8 @@ public class MainActivity extends AppCompatActivity
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
+            Intent intent=new Intent(getApplicationContext(),Settings.class);
+            startActivity(intent);
             return true;
         }
 

@@ -53,22 +53,27 @@ public class RegActivity extends AppCompatActivity {
                         String phone=phonebox.getText().toString();
                         String city=citybox.getText().toString();
                         String email=emailbox.getText().toString();
-                        if(!password.equals(cpassword)) {
-                            Toast.makeText(getApplicationContext(),"Passwords do no match",Toast.LENGTH_SHORT).show();
+                        if(name.length()==0 && password.length()==0 && cpassword.length() ==0 && address.length()==0 &&city.length()==0 && phone.length()==0 && email.length()==0) {
+
+                            Toast.makeText(getApplicationContext(),"Incorrect Details",Toast.LENGTH_SHORT).show();
                         }
                         else {
-                            sharedPreferences=getSharedPreferences(MyPrefs, Context.MODE_PRIVATE);
-                            SharedPreferences.Editor data=sharedPreferences.edit();
-                            data.putString(Key,name);
-                            data.putString(Key2,city);
-                            data.commit();
-                            User user = new User();
-                            user.set(name,password,phone,address,email);
-                            mDatabase.child(city.toUpperCase()).child("CUSTOMER").child(name).setValue(user);
-                            Toast.makeText(getApplicationContext(),"Successful",Toast.LENGTH_SHORT).show();
-                            Intent intent=new Intent(getApplicationContext(),MainActivity.class);
-                            startActivity(intent);
-                            finish();
+                            if(cpassword.equals(password)) {
+                                sharedPreferences = getSharedPreferences(MyPrefs, Context.MODE_PRIVATE);
+                                SharedPreferences.Editor data = sharedPreferences.edit();
+                                data.putString(Key, name);
+                                data.putString(Key2, city);
+                                data.commit();
+                                User user = new User();
+                                user.set(name, password, phone, address, email);
+                                mDatabase.child(city.toUpperCase()).child("CUSTOMER").child(name).setValue(user);
+                                Toast.makeText(getApplicationContext(), "Successful", Toast.LENGTH_SHORT).show();
+                                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                                startActivity(intent);
+                                finish();
+                            }
+                            else
+                                Toast.makeText(getApplicationContext(),"Passwords Do Not Match",Toast.LENGTH_SHORT).show();
                         }
                     }
                     catch (Exception e)

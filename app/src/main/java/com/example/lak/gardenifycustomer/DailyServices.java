@@ -38,6 +38,7 @@ public class DailyServices extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_daily_services);
+        setTitle("Daily Services");
 
         servicesview = findViewById(R.id.dailyservicesview);
 

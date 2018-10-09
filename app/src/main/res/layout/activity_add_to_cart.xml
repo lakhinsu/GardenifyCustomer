@@ -31,6 +31,7 @@
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:text="ADD"
+        android:background="@drawable/btn_bg_selector"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
@@ -41,6 +42,7 @@
         android:layout_marginBottom="8dp"
         android:layout_marginStart="8dp"
         android:text="Cancel"
+        android:background="@drawable/btn_bg_selector"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
@@ -52,6 +54,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:text="Pick Time"
+        android:background="@drawable/btn_bg_selector"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/cartadd"
         app:layout_constraintStart_toEndOf="@+id/cartcancel" />

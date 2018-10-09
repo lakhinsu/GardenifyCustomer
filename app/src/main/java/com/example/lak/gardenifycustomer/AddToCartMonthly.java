@@ -52,6 +52,8 @@ public class AddToCartMonthly extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_to_cart_monthly);
 
+        setTitle("Add to Cart");
+
         Bundle extras = getIntent().getExtras();
         name=extras.getString("Name");
         city=extras.getString("City");
